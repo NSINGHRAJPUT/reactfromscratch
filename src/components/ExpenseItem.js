@@ -1,17 +1,16 @@
 import "./ExpenseItem.css";
 
-function ExpenseItem() {
-  const expenseDate = new Date(2022, 4, 4);
-  const expenseTitle = "Birthday";
-  const expenseLocation = "Ashima Mall";
-  const expneseAmount = 300;
+function ExpenseItem(props) {
   return (
-    <div className="expense-item">
-      <div>{expenseDate.toISOString()}</div>
-      <div className="expense-item__description">
-        <h2>{expenseTitle}</h2>
-        <h2>{expenseLocation}</h2>
-        <div className="expense-item__price">${expneseAmount}</div>
+    <div>
+      <h4>{props.index}</h4>
+      <div className="expense-item">
+        <div>{props.date.toISOString()}</div>
+        <div className="expense-item__description">
+          <h2>{props.title}</h2>
+          <h2>{props.expenseLocation}</h2>
+          <div className="expense-item__price">${props.amount}</div>
+        </div>
       </div>
     </div>
   );
