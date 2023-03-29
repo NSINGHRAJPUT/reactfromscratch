@@ -2,31 +2,20 @@ import ExpenseDate from "../ExpenseDate/ExpenseDate";
 import ExpenseDetails from "../ExpenseDetails/ExpenseDetails";
 import "./ExpenseItem.css";
 import Card from "../UI/Card";
-import { itemExpense } from "./Expenses";
+import { useState } from "react";
 
 const ExpenseItem = (props) => {
-  let title = props.title;
+  const [amount, setAmount] = useState(props.amount);
   const clickHandler = () => {
-    console.log(title);
-    let x = 0;
-    for (let i = 0; i < itemExpense.length; i++) {
-      if (title === itemExpense[i].title) {
-        x = i;
-      }
-    }
-    for (let j = x; j < itemExpense.length - 1; j++) {
-      itemExpense[j] = itemExpense[j + 1];
-    }
-    itemExpense.pop();
-    console.log(itemExpense);
+    setAmount(100);
   };
   return (
     <Card className="expense-item">
       <ExpenseDate date={props.date} />
       <ExpenseDetails
-        title={title}
+        title={props.title}
         expenseLocation={props.expenseLocation}
-        amount={props.amount}
+        amount={amount}
       />
       <button onClick={clickHandler}>Delete item</button>
     </Card>
