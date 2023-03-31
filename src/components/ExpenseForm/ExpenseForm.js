@@ -1,27 +1,64 @@
-const NewExpense = () => {
-  const addForm = () => {
-    let title = document.getElementById("title").value;
-    let date = document.getElementById("date").value;
-    let amount = document.getElementById("amount").value;
-    let location = document.getElementById("location").value;
-    console.log([title, date, amount, location]);
+import "./ExpenseForm.css";
+import { useState } from "react";
+
+const ExpenseForm = () => {
+  const [enteredTitle, setEnteredTitle] = useState("");
+  const [enteredAmount, setEnteredAmount] = useState("");
+  const [enteredLocation, setEnteredLocation] = useState("");
+  const [enteredDate, setEnteredDate] = useState("");
+
+  const titleChangeHandler = (e) => {
+    setEnteredTitle(e.target.value);
+  };
+  const amountChangeHandler = (e) => {
+    setEnteredAmount(e.target.value);
+  };
+  const dateChangeHandler = (e) => {
+    setEnteredDate(e.target.value);
+  };
+  const locationChangeHandler = (e) => {
+    setEnteredLocation(e.target.value);
+  };
+  const submitHandler = (e) => {
+    e.preventDefault();
+    const expenseData = {
+      title: enteredTitle,
+      amount: enteredAmount,
+      date: new Date(enteredDate),
+      location: enteredLocation,
+    };
+    console.log(expenseData);
   };
   return (
-    <div>
-      <form>
-        <label>title</label>
-        <input type="text" id="title"></input>
-        <label>Date</label>
-        <input type="date" id="date"></input>
-        <label>Location</label>
-        <input type="text" id="location"></input>
-        <label>Amount</label>
-        <input type="number" id="amount"></input>
-        <br></br>
-        <input type="button" value="submit" onClick={addForm}></input>
-      </form>
-    </div>
+    <form onSubmit={submitHandler}>
+      <div className="new-expense__controls">
+        <div className="new-expense__control">
+          <label>Title</label>
+          <input type="text" onChange={titleChangeHandler} />
+        </div>
+        <div className="new-expense__control">
+          <label> Amount</label>
+          <input
+            type="number"
+            min="0.01"
+            step="0.01"
+            onChange={amountChangeHandler}
+          />
+        </div>
+        <div className="new-expense__control">
+          <label>Date</label>
+          <input type="date" onChange={dateChangeHandler} />
+        </div>
+        <div className="new-expense__control">
+          <label>Location</label>
+          <input type="text" onChange={locationChangeHandler} />
+        </div>
+      </div>
+      <div className="new-expense__actions">
+        <button type="submit">Add Expense</button>
+      </div>
+    </form>
   );
 };
 
-export default NewExpense;
+export default ExpenseForm;

@@ -1,7 +1,7 @@
 import "./App.css";
 import ExpenseItem from "./components/ExpenseItem/ExpenseItem";
 import { itemExpense } from "./components/ExpenseItem/Expenses";
-import ExpenseForm from "./components/ExpenseForm/ExpenseForm";
+import NewExpense from "./components/ExpenseForm/NewExpense";
 
 const App = () => {
   let expenseList = [];
@@ -18,9 +18,8 @@ const App = () => {
   });
   return (
     <div>
-      <h2>hello there</h2>
+      <NewExpense />
       {expenseList}
-      <ExpenseForm />
     </div>
   );
 };
