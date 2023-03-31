@@ -6,9 +6,6 @@ import { useState } from "react";
 
 const ExpenseItem = (props) => {
   const [amount, setAmount] = useState(props.amount);
-  const clickHandler = () => {
-    setAmount(100);
-  };
   return (
     <Card className="expense-item">
       <ExpenseDate date={props.date} />
@@ -17,7 +14,6 @@ const ExpenseItem = (props) => {
         expenseLocation={props.expenseLocation}
         amount={amount}
       />
-      <button onClick={clickHandler}>Delete item</button>
     </Card>
   );
 };
