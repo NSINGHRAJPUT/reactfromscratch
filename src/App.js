@@ -1,50 +1,49 @@
-import "./App.css";
-//import ExpenseItem from "./components/ExpenseItem/ExpenseItem";
-import Expenses from "./components/ExpenseItem/Expenses";
-import NewExpense from "./components/ExpenseForm/NewExpense";
-import { useState } from "react";
-let DUMMY_EXPENSES = [
-  {
-    id: 1,
-    title: "Bike insurance",
-    amount: 300,
-    date: new Date(2022, 2, 23),
-  },
-  {
-    id: 2,
-    title: "Property tax",
-    amount: 500,
-    date: new Date(2022, 3, 13),
-  },
-  {
-    id: 3,
-    title: "Elextricity bill",
-    amount: 450,
-    date: new Date(2022, 1, 3),
-  },
-  {
-    id: 4,
-    title: "Bakery",
-    amount: 100,
-    date: new Date(2022, 12, 20),
-  },
-];
+import React from 'react';
+
+import NewExpense from './components/NewExpense/NewExpense';
+import Expenses from './components/Expenses/Expenses';
+
 const App = () => {
-  const [expenses, setExpenses] = useState(DUMMY_EXPENSES);
-  const addExpenseHandler = (expense) => {
-    console.log("in app.js");
-    console.log(expenses);
+  const expenses = [
+    {
+      id: 'e1',
+      title: 'Toilet Paper',
+      amount: 94.12,
+      date: new Date(2020, 7, 14),
+    },
+    { id: 'e2', title: 'New TV', amount: 799.49, date: new Date(2021, 2, 12) },
+    {
+      id: 'e3',
+      title: 'Car Insurance',
+      amount: 294.67,
+      date: new Date(2021, 2, 28),
+    },
+    {
+      id: 'e4',
+      title: 'New Desk (Wooden)',
+      amount: 450,
+      date: new Date(2021, 5, 12),
+    },
+  ];
+
+  const addExpenseHandler = expense => {
+    console.log('In App.js');
     console.log(expense);
-    setExpenses((prevExpenses) => {
-      return [expense, ...prevExpenses];
-    });
   };
+
+  // return React.createElement(
+  //   'div',
+  //   {},
+  //   React.createElement('h2', {}, "Let's get started!"),
+  //   React.createElement(Expenses, { items: expenses })
+  // );
+
   return (
     <div>
       <NewExpense onAddExpense={addExpenseHandler} />
-      <Expenses items={expenses}></Expenses>
+      <Expenses items={expenses} />
     </div>
   );
-};
+}
 
 export default App;
